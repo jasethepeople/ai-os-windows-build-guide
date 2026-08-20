@@ -42,13 +42,15 @@ const wslInstall = "sudo apt-get update\nsudo apt-get install python3-dev binuti
 const wslBuild = "cd ~/ai_os_windows_ultimate\npyinstaller ai_os.spec";
 const optimization = "pyinstaller --onefile --strip --upx-dir=C:\\upx ai_os_launcher.py";
 const requirements = "pip install -r requirements.txt";
+const releaseChecksum = "3609e629ce35f0087fde1b9e516f6339711a65a232fbbb2a85d09eab073597d8";
 
 type CopyButtonProps = {
   value: string;
   label?: string;
+  light?: boolean;
 };
 
-function CopyButton({ value, label = "Copy" }: CopyButtonProps) {
+function CopyButton({ value, label = "Copy", light = false }: CopyButtonProps) {
   const [copied, setCopied] = useState(false);
 
   const copy = async () => {
@@ -62,7 +64,7 @@ function CopyButton({ value, label = "Copy" }: CopyButtonProps) {
   };
 
   return (
-    <button className="copy-button" type="button" onClick={copy} aria-label={`Copy command: ${value}`}>
+    <button className={`copy-button${light ? " copy-button--light" : ""}`} type="button" onClick={copy} aria-label={`Copy text: ${value}`}>
       {copied ? <Check size={14} strokeWidth={2.5} /> : <Copy size={14} strokeWidth={2.2} />}
       <span>{copied ? "Copied" : label}</span>
     </button>
@@ -163,6 +165,11 @@ export default function Home() {
               <div className="release-card__eyebrow"><span /> latest available archive</div>
               <strong>AI_Operating_System_Windows_ULTIMATE_FIXED.zip</strong>
               <p>ZIP package · 0.5 MB · fixed source and build assets</p>
+              <div className="release-checksum">
+                <span>SHA-256</span>
+                <code>{releaseChecksum}</code>
+                <CopyButton value={releaseChecksum} label="Copy SHA-256" light />
+              </div>
             </div>
             <a className="release-download" href="/manus-storage/AI_Operating_System_Windows_ULTIMATE_FIXED_90766475.zip" download="AI_Operating_System_Windows_ULTIMATE_FIXED.zip">
               <Download size={18} /> Download ZIP
