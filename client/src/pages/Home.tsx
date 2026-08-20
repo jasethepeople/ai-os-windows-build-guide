@@ -126,7 +126,7 @@ export default function Home() {
           <span>AI OS <i>Build Guide</i></span>
         </a>
         <div className="topbar__meta"><span className="status-dot" /> Windows build field manual</div>
-        <a className="topbar__action" href="#method-windows">Start the build <ArrowDownRight size={17} /></a>
+        <a className="topbar__action" href="#release">Get the release <ArrowDownRight size={17} /></a>
       </header>
 
       <main>
@@ -138,7 +138,7 @@ export default function Home() {
             <h1>Build once.<br /><em>Hand off</em> one executable.</h1>
             <p>Follow the correct Windows path to package your Python application, locate the artifact, and validate it before distribution.</p>
             <div className="hero__actions">
-              <a className="button button--signal" href="#method-windows">Build on Windows <ArrowRight size={17} /></a>
+              <a className="button button--signal" href="#release">Download the package <Download size={17} /></a>
               <a className="button button--quiet" href="#verification">Verify the artifact</a>
             </div>
           </div>
@@ -149,6 +149,26 @@ export default function Home() {
             <p>Native Windows executable<br />after a successful build.</p>
             <div className="artifact-card__footer"><span /> Build target: Windows</div>
           </aside>
+        </section>
+
+        <section className="release-band" id="release" aria-label="Latest release package">
+          <div className="release-band__intro">
+            <span className="section-kicker">Current release package</span>
+            <h2>Download the source package.</h2>
+            <p>Extract this ZIP on a Windows machine, then use the build instructions below to create and validate the native executable.</p>
+          </div>
+          <div className="release-card">
+            <div className="release-card__file-icon"><FileArchive size={27} /></div>
+            <div className="release-card__details">
+              <div className="release-card__eyebrow"><span /> latest available archive</div>
+              <strong>AI_Operating_System_Windows_ULTIMATE_FIXED.zip</strong>
+              <p>ZIP package · 0.5 MB · fixed source and build assets</p>
+            </div>
+            <a className="release-download" href="/manus-storage/AI_Operating_System_Windows_ULTIMATE_FIXED_90766475.zip" download="AI_Operating_System_Windows_ULTIMATE_FIXED.zip">
+              <Download size={18} /> Download ZIP
+            </a>
+          </div>
+          <p className="release-note"><Info size={15} /> This is a source package, not a pre-built Windows executable. Follow the native build path to produce the <code>.exe</code>.</p>
         </section>
 
         <div className="guide-frame">
