@@ -43,6 +43,8 @@ const wslBuild = "cd ~/ai_os_windows_ultimate\npyinstaller ai_os.spec";
 const optimization = "pyinstaller --onefile --strip --upx-dir=C:\\upx ai_os_launcher.py";
 const requirements = "pip install -r requirements.txt";
 const releaseChecksum = "3609e629ce35f0087fde1b9e516f6339711a65a232fbbb2a85d09eab073597d8";
+const certutilVerify = "certutil -hashfile AI_Operating_System_Windows_ULTIMATE_FIXED.zip SHA256";
+const powershellVerify = "Get-FileHash .\\AI_Operating_System_Windows_ULTIMATE_FIXED.zip -Algorithm SHA256";
 
 type CopyButtonProps = {
   value: string;
@@ -186,9 +188,10 @@ export default function Home() {
           <aside className="guide-rail" aria-label="Guide sections">
             <div className="guide-rail__intro">
               <p>Build sequence</p>
-              <strong>04 stages</strong>
+              <strong>05 stages</strong>
             </div>
             <nav>
+              <RailLink number="00" label="Release center" href="#release-center" />
               <RailLink number="01" label="Native build" href="#method-windows" />
               <RailLink number="02" label="Alternatives" href="#alternatives" />
               <RailLink number="03" label="Troubleshoot" href="#troubleshooting" />
@@ -207,6 +210,70 @@ export default function Home() {
               <div className="intro-strip__chips">
                 <span><MonitorCog size={15} /> Windows 10/11</span>
                 <span><TerminalSquare size={15} /> Python 3.8+</span>
+              </div>
+            </section>
+
+            <section className="section-block release-center" id="release-center">
+              <div className="section-heading">
+                <div><span className="section-kicker">00 / release center</span><h2>Everything needed to evaluate this package.</h2></div>
+                <p>Verify the archive, confirm the environment, understand the release context, and know what to provide if a build needs support.</p>
+              </div>
+
+              <div className="release-center-grid">
+                <article className="integrity-card">
+                  <div className="integrity-card__heading"><ShieldAlert size={23} /><div><span className="card-label">Integrity check</span><h3>Verify the download first.</h3></div></div>
+                  <p>Run one of these commands from the folder that contains the downloaded ZIP. The returned hash must match the expected SHA-256 value below.</p>
+                  <div className="expected-hash"><span>Expected SHA-256</span><code>{releaseChecksum}</code><CopyButton value={releaseChecksum} label="Copy expected hash" /></div>
+                  <CommandSlip language="COMMAND PROMPT" command={certutilVerify} />
+                  <CommandSlip language="POWERSHELL" command={powershellVerify} />
+                </article>
+
+                <article className="compatibility-card">
+                  <div className="compatibility-card__heading"><MonitorCog size={22} /><div><span className="card-label">Compatibility</span><h3>Target environment</h3></div></div>
+                  <table className="compatibility-table">
+                    <thead><tr><th>Component</th><th>Requirement</th><th>Status</th></tr></thead>
+                    <tbody>
+                      <tr><td>Build host</td><td>Windows 10 or 11</td><td><span className="matrix-status">Documented</span></td></tr>
+                      <tr><td>Python</td><td>3.8 or newer, on PATH</td><td><span className="matrix-status">Required</span></td></tr>
+                      <tr><td>Packager</td><td>PyInstaller</td><td><span className="matrix-status">Required</span></td></tr>
+                      <tr><td>WSL path</td><td>Linux output only</td><td><span className="matrix-status matrix-status--muted">Alternative</span></td></tr>
+                    </tbody>
+                  </table>
+                  <div className="compatibility-note"><Info size={16} /><p>The archive is a source package. Use the Windows build path when the intended output is a native <code>.exe</code>.</p></div>
+                </article>
+              </div>
+
+              <div className="release-detail-grid">
+                <article className="release-detail-card">
+                  <div className="release-detail-card__title"><PackageCheck size={20} /><div><span className="card-label">Release notes</span><h3>v1.0.0 / Fixed source package</h3></div></div>
+                  <p>This release contains the source package, Windows-oriented setup scripts, a PyInstaller configuration, and the accompanying build documentation.</p>
+                  <div className="detail-checks">
+                    <span><CheckCircle2 size={16} /> Package extraction and setup guidance</span>
+                    <span><CheckCircle2 size={16} /> Launcher and build-configuration assets</span>
+                    <span><CheckCircle2 size={16} /> Build, verification, and distribution guidance</span>
+                  </div>
+                </article>
+
+                <article className="release-detail-card release-detail-card--timeline">
+                  <div className="release-detail-card__title"><Command size={20} /><div><span className="card-label">Changelog</span><h3>Release history</h3></div></div>
+                  <div className="changelog-item">
+                    <div><b>v1.0.0</b><span>July 19, 2025</span></div>
+                    <p>Initial fixed source package published with the included setup, launch, packaging, and guidance materials.</p>
+                  </div>
+                  <p className="future-release-note">Future releases should add a new dated entry here, update the download URL, package size, and SHA-256 value together.</p>
+                </article>
+              </div>
+
+              <div className="release-operations">
+                <article className="release-operations__card">
+                  <FileArchive size={21} /><h3>Distribution brief</h3><p>Share the verified ZIP when recipients need the source package. Share a separately verified <code>.exe</code> only after it has passed the clean-machine check.</p>
+                </article>
+                <article className="release-operations__card">
+                  <TerminalSquare size={21} /><h3>Support record</h3><p>For a build issue, capture the Windows version, Python version, exact command, full terminal output, and whether the failure occurs before or after packaging.</p>
+                </article>
+                <article className="release-operations__card release-operations__card--alert">
+                  <ShieldAlert size={21} /><h3>Known limitations</h3><p>This release page distributes a source ZIP, not a pre-built native executable. External integrations and runtime behavior require their own configuration and validation.</p>
+                </article>
               </div>
             </section>
 

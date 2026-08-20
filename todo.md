@@ -19,3 +19,13 @@ Validation note: the SHA-256 value matches the hosted archive, is shown in full 
 - [x] Verify the revised site and save the completed update.
 
 Validation note: the live release card visibly shows v1.0.0, July 19, 2025, the direct download action, and the matching checksum control.
+
+## Complete release center
+
+- [x] Add an integrity-verification command for Windows users alongside the SHA-256 value.
+- [x] Add a compatibility matrix and concise system requirements panel.
+- [x] Add release notes and a changelog timeline for the current package.
+- [x] Add a complete distribution, support, and known-limitations reference.
+- [x] Verify the expanded release center and save the final update.
+
+Validation note: the complete release center renders in the live preview, and the expected-hash copy action changes to “Copied” after activation.
