@@ -11,3 +11,11 @@ Validation note: the production build succeeded and the release panel visibly pr
 - [x] Verify the revised site and save the completed update.
 
 Validation note: the SHA-256 value matches the hosted archive, is shown in full in the release card, and has a dedicated copy action.
+
+## Release metadata enhancement
+
+- [x] Determine the supplied package's version and release date from available metadata.
+- [x] Add version and release date to the release download card.
+- [x] Verify the revised site and save the completed update.
+
+Validation note: the live release card visibly shows v1.0.0, July 19, 2025, the direct download action, and the matching checksum control.

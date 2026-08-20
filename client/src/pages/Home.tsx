@@ -165,6 +165,10 @@ export default function Home() {
               <div className="release-card__eyebrow"><span /> latest available archive</div>
               <strong>AI_Operating_System_Windows_ULTIMATE_FIXED.zip</strong>
               <p>ZIP package · 0.5 MB · fixed source and build assets</p>
+              <dl className="release-meta">
+                <div><dt>Version</dt><dd>v1.0.0</dd></div>
+                <div><dt>Released</dt><dd>July 19, 2025</dd></div>
+              </dl>
               <div className="release-checksum">
                 <span>SHA-256</span>
                 <code>{releaseChecksum}</code>
