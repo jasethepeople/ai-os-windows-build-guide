@@ -28,6 +28,7 @@ import {
   Wrench,
   XCircle,
 } from "lucide-react";
+import BugReportForm from "../components/BugReportForm";
 
 const assets = {
   mark: "/manus-storage/ai-os-build-mark_58905169.png",
@@ -130,7 +131,10 @@ export default function Home() {
           <span>AI OS <i>Build Guide</i></span>
         </a>
         <div className="topbar__meta"><span className="status-dot" /> Windows build field manual</div>
-        <a className="topbar__action" href="#release">Get the release <ArrowDownRight size={17} /></a>
+        <div className="topbar__actions">
+          <a className="topbar__action topbar__action--subtle" href="#release">Get the release <ArrowDownRight size={17} /></a>
+          <a className="topbar__action" href="#report-issue">Report a bug <ArrowDownRight size={17} /></a>
+        </div>
       </header>
 
       <main>
@@ -274,6 +278,26 @@ export default function Home() {
                 <article className="release-operations__card release-operations__card--alert">
                   <ShieldAlert size={21} /><h3>Known limitations</h3><p>This release page distributes a source ZIP, not a pre-built native executable. External integrations and runtime behavior require their own configuration and validation.</p>
                 </article>
+              </div>
+            </section>
+
+            <section className="section-block bug-report-section" id="report-issue">
+              <div className="section-heading">
+                <div><span className="section-kicker">Report an issue</span><h2>Help make the next release more reliable.</h2></div>
+                <p>Use the form to send a structured bug report. The more exact the steps and error text, the easier it is to investigate.</p>
+              </div>
+              <div className="bug-report-layout">
+                <aside className="bug-report-aside">
+                  <span className="card-label">Before you submit</span>
+                  <h3>Include the evidence that matters.</h3>
+                  <div className="bug-report-aside__checks">
+                    <span><CheckCircle2 size={17} /> The exact command you ran</span>
+                    <span><CheckCircle2 size={17} /> Your Windows and Python versions</span>
+                    <span><CheckCircle2 size={17} /> The first relevant error message</span>
+                  </div>
+                  <p><ShieldAlert size={16} /> Never include passwords, API keys, tokens, private keys, or other credentials.</p>
+                </aside>
+                <BugReportForm />
               </div>
             </section>
 

@@ -29,3 +29,18 @@ Validation note: the live release card visibly shows v1.0.0, July 19, 2025, the 
 - [x] Verify the expanded release center and save the final update.
 
 Validation note: the complete release center renders in the live preview, and the expected-hash copy action changes to “Copied” after activation.
+
+## Bug reporting
+
+- [x] Define the report fields, privacy note, and submission confirmation requirements.
+- [x] Enable persistent storage for submitted issue reports.
+- [x] Implement and validate the user-facing bug-report form.
+
+Validation note: the database migration completed successfully, all four Vitest checks passed, the full-stack production build passed, and the live public form displays its fields, privacy acknowledgement, and submission action.
+
+### End-to-end submission verification
+
+- [x] Submit a live bug report and confirm the reference-code success state appears.
+- [x] Confirm the submitted report is persisted, then remove the verification-only report from storage.
+
+Validation note: the live form returned reference code `BGR-ZVPXR5VB`; the matching `new` report was found in persistent storage and then removed, leaving zero verification-only reports behind.
